@@ -1,0 +1,10 @@
+{
+  "name": "code-review-kit",
+  "version": "1.0.0",
+  "description": "MVP 코드 리뷰 키트 — 코드 리뷰 스킬, 읽기 전용 리뷰 서브에이전트, lint/build/test를 돌리는 프리 커밋 훅을 하나로 묶은 플러그인.",
+  "author": {
+    "name": "haksu",
+    "email": "tky6012@gmail.com"
+  },
+  "keywords": ["code-review", "skill", "subagent", "hook", "pre-commit"]
+}
