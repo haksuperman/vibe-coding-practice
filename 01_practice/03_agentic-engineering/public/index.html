@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>채팅방 요약 도우미</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <span class="brand-badge">🔑 API 키는 서버에만 · 브라우저로 나가지 않음</span>
+    <h1>채팅, <span class="grad">놓친 부분만</span> 빠르게</h1>
+    <p>채팅방에서 내보낸 CSV를 올리면, 기간을 골라 요약·핵심 주제·결정 사항·할 일까지 정리해 드려요.</p>
+  </header>
+
+  <main>
+    <!-- 업로드 -->
+    <section id="upload-section">
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-inner">
+          <div class="dropzone-icon">💬</div>
+          <p class="dropzone-title">파일을 끌어다 놓거나 클릭해서 선택하세요</p>
+          <p class="dropzone-hint">Date · User · Message 컬럼이 있는 채팅 내보내기 CSV</p>
+          <input type="file" id="file-input" accept=".csv,text/csv" hidden />
+        </div>
+      </div>
+      <div class="sample-link">
+        <button id="load-sample" type="button">샘플 데이터로 먼저 둘러보기</button>
+      </div>
+      <div id="parse-error" class="error-box" hidden></div>
+    </section>
+
+    <!-- 분석/기간 선택 -->
+    <section id="dashboard" hidden>
+      <div id="summary-cards" class="summary-cards"></div>
+
+      <div class="card">
+        <h2>요약할 기간</h2>
+        <p class="card-sub">못 본 구간만 빠르게. 가장 최근 메시지 기준입니다.</p>
+        <div class="period-row" id="period-presets"></div>
+        <div class="custom-range">
+          <label>시작 <input type="date" id="range-start" /></label>
+          <label>종료 <input type="date" id="range-end" /></label>
+        </div>
+        <div class="period-meta" id="period-meta"></div>
+        <div class="actions">
+          <button id="summarize" type="button" class="primary-btn">요약 생성</button>
+          <button id="reset" type="button" class="ghost-btn">다른 파일 올리기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 요약 결과 -->
+    <section id="result-section" hidden>
+      <div class="card">
+        <h2>요약 결과 <span id="result-model" class="result-model"></span></h2>
+        <div id="summary-output" class="summary-output"></div>
+      </div>
+    </section>
+
+    <!-- 로딩 -->
+    <div id="loading" class="loading" hidden>
+      <div class="spinner"></div>
+      <span>요약을 생성하는 중…</span>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <span>CSV 파싱·통계는 브라우저에서, 요약만 서버를 통해 OpenAI로 전달됩니다.</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

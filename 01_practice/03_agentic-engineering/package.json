@@ -1,0 +1,15 @@
+{
+  "name": "chat-summarizer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "채팅방 CSV를 받아 요약 · 액션 아이템을 만들어 주는 MVP",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "openai": "^4.67.3"
+  }
+}
